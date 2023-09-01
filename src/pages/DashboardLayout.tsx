@@ -4,7 +4,10 @@ import { BigSidebar, Navbar, SmallSidebar } from '../components';
 import { createContext, useContext, useState } from 'react';
 
 interface DashboardContextIface {
-  user: string;
+  user: {
+    name: string;
+    avatar?: string;
+  };
   showSidebar: boolean;
   isDarkTheme: boolean;
   toggleSidebar: () => void;
@@ -13,7 +16,9 @@ interface DashboardContextIface {
 }
 
 const dashboardContext = createContext<DashboardContextIface>({
-  user: '',
+  user: {
+    name: '',
+  },
   showSidebar: false,
   isDarkTheme: false,
   toggleSidebar: () => {},
@@ -22,7 +27,7 @@ const dashboardContext = createContext<DashboardContextIface>({
 });
 
 function DashboardLayout() {
-  const user = 'emanuele';
+  const user = { name: 'emanuele' };
 
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
@@ -68,5 +73,5 @@ function DashboardLayout() {
   );
 }
 
-export const useDahsboardContext = () => useContext(dashboardContext);
+export const useDashboardContext = () => useContext(dashboardContext);
 export default DashboardLayout;

@@ -1,10 +1,11 @@
 import Wrapper from '../assets/wrappers/Navbar';
 import { FaAlignLeft } from 'react-icons/fa';
-import { useDahsboardContext } from '../pages/DashboardLayout';
+import { useDashboardContext } from '../pages/DashboardLayout';
 import { Logo } from '.';
+import LogoutContainer from './LogoutContainer';
 
 function Navbar() {
-  const { toggleSidebar } = useDahsboardContext();
+  const { toggleSidebar } = useDashboardContext();
 
   return (
     <Wrapper>
@@ -16,7 +17,9 @@ function Navbar() {
           <Logo />
           <h4 className='logo-text'>dashboard</h4>
         </div>
-        <div className='btn-container'>toggle/logout</div>
+        <div className='btn-container'>
+          <LogoutContainer />
+        </div>
       </div>
     </Wrapper>
   );

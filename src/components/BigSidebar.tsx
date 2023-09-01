@@ -1,10 +1,10 @@
 import { Logo } from '.';
 import Wrapper from '../assets/wrappers/BigSidebar';
-import { useDahsboardContext } from '../pages/DashboardLayout';
+import { useDashboardContext } from '../pages/DashboardLayout';
 import NavLinks from './NavLinks';
 
 function BigSidebar() {
-  const { showSidebar } = useDahsboardContext();
+  const { showSidebar } = useDashboardContext();
 
   return (
     <Wrapper>

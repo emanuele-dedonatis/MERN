@@ -1,4 +1,4 @@
-import { useDahsboardContext } from '../pages/DashboardLayout';
+import { useDashboardContext } from '../pages/DashboardLayout';
 import links from '../utils/links';
 import { NavLink } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ interface Props {
 }
 
 function NavLinks({ closeOnClick }: Props) {
-  const { toggleSidebar } = useDahsboardContext();
+  const { toggleSidebar } = useDashboardContext();
 
   return (
     <div className='nav-links'>
