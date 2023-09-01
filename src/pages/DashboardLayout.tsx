@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Dashboard';
 import { BigSidebar, Navbar, SmallSidebar } from '../components';
 import { createContext, useContext, useState } from 'react';
+import { checkDefaultTheme } from '../App';
 
 interface DashboardContextIface {
   user: {
@@ -30,16 +31,17 @@ function DashboardLayout() {
   const user = { name: 'emanuele' };
 
   const [showSidebar, setShowSidebar] = useState(false);
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 
   const toggleSidebar = () => {
-    console.log('toggleSidebar');
     setShowSidebar(!showSidebar);
   };
 
   const toggleDarkTheme = () => {
-    console.log('toggleDarkTheme');
+    const newDarkTheme = !isDarkTheme;
     setIsDarkTheme(!isDarkTheme);
+    document.body.classList.toggle('dark-theme', newDarkTheme);
+    localStorage.setItem('darkTheme', newDarkTheme ? '1' : '0');
   };
 
   const logoutUser = () => {
