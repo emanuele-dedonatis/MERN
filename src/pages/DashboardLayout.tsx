@@ -3,7 +3,23 @@ import Wrapper from '../assets/wrappers/Dashboard';
 import { BigSidebar, Navbar, SmallSidebar } from '../components';
 import { createContext, useContext, useState } from 'react';
 
-const dashboardContext = createContext({});
+interface DashboardContextIface {
+  user: string;
+  showSidebar: boolean;
+  isDarkTheme: boolean;
+  toggleSidebar: () => void;
+  toggleDarkTheme: () => void;
+  logoutUser: () => void;
+}
+
+const dashboardContext = createContext<DashboardContextIface>({
+  user: '',
+  showSidebar: false,
+  isDarkTheme: false,
+  toggleSidebar: () => {},
+  toggleDarkTheme: () => {},
+  logoutUser: () => {},
+});
 
 function DashboardLayout() {
   const user = 'emanuele';
@@ -12,10 +28,12 @@ function DashboardLayout() {
   const [isDarkTheme, setIsDarkTheme] = useState(false);
 
   const toggleSidebar = () => {
+    console.log('toggleSidebar');
     setShowSidebar(!showSidebar);
   };
 
   const toggleDarkTheme = () => {
+    console.log('toggleDarkTheme');
     setIsDarkTheme(!isDarkTheme);
   };
 
@@ -29,6 +47,9 @@ function DashboardLayout() {
         user,
         showSidebar,
         isDarkTheme,
+        toggleSidebar,
+        toggleDarkTheme,
+        logoutUser,
       }}
     >
       <Wrapper>
